@@ -185,11 +185,34 @@ const HomePage = () => {
           cursor: pointer;
           transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
           transform-style: preserve-3d;
+          position: relative;
         }
-        .dice-svg {
+        .dice-image-wrapper {
+          position: relative;
           width: 100%;
           height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .dice-image {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
           filter: drop-shadow(0 15px 40px rgba(21, 128, 61, 0.35)) drop-shadow(0 5px 15px rgba(13, 77, 40, 0.2));
+        }
+        .dice-number-overlay {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 62px;
+          font-weight: 900;
+          color: white;
+          text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.1);
+          font-family: system-ui, -apple-system, sans-serif;
+          pointer-events: none;
+          user-select: none;
         }
         .d20-dice:hover {
           transform: translateY(-12px) scale(1.08) rotateX(5deg);
