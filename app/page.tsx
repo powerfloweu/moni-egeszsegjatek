@@ -174,33 +174,36 @@ const HomePage = () => {
           margin-bottom: 16px;
         }
         .dice-container {
-          margin: 32px 0;
+          margin: 40px 0;
           display: flex;
           justify-content: center;
+          perspective: 1200px;
         }
         .d20-dice {
-          width: 200px;
-          height: 200px;
+          width: 240px;
+          height: 280px;
           cursor: pointer;
-          transition: transform 0.3s ease;
+          transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          transform-style: preserve-3d;
         }
         .dice-svg {
           width: 100%;
           height: 100%;
-          filter: drop-shadow(0 10px 30px rgba(21, 128, 61, 0.4));
+          filter: drop-shadow(0 15px 40px rgba(21, 128, 61, 0.35)) drop-shadow(0 5px 15px rgba(13, 77, 40, 0.2));
         }
         .d20-dice:hover {
-          transform: translateY(-8px) scale(1.05);
+          transform: translateY(-12px) scale(1.08) rotateX(5deg);
         }
         .d20-dice.rolling {
-          animation: diceRollAnimation 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation: diceRollAnimation 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         @keyframes diceRollAnimation {
-          0% { transform: rotate(0deg) scale(1); }
-          25% { transform: rotate(90deg) scale(1.15); }
-          50% { transform: rotate(180deg) scale(1.2); }
-          75% { transform: rotate(270deg) scale(1.15); }
-          100% { transform: rotate(360deg) scale(1); }
+          0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); }
+          20% { transform: rotateX(180deg) rotateY(180deg) rotateZ(90deg) scale(1.15); }
+          40% { transform: rotateX(360deg) rotateY(360deg) rotateZ(180deg) scale(1.2); }
+          60% { transform: rotateX(540deg) rotateY(540deg) rotateZ(270deg) scale(1.15); }
+          80% { transform: rotateX(720deg) rotateY(720deg) rotateZ(360deg) scale(1.08); }
+          100% { transform: rotateX(720deg) rotateY(720deg) rotateZ(360deg) scale(1); }
         }
         .dice-number {
           pointer-events: none;
